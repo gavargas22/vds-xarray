@@ -36,3 +36,6 @@ venv.bak/
 
 # macOS
 .DS_Store
+
+ignore/
+uv.lock
