@@ -165,6 +165,15 @@ This documentation follows the `Diátaxis framework <https://diataxis.fr/>`_, or
    license
 
 
+.. toctree::
+   :hidden:
+
+   CHANGELOG
+   CONTRIBUTING
+   TECHNICAL-OVERVIEW
+   USER-GUIDE
+
+
 Indices and tables
 ==================
 

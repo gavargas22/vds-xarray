@@ -78,12 +78,7 @@ intersphinx_mapping = {
 }
 
 templates_path = ["_templates"]
-exclude_patterns = [
-    "CHANGELOG.md",
-    "CONTRIBUTING.md",
-    "TECHNICAL-OVERVIEW.md",
-    "USER-GUIDE.md",
-]
+exclude_patterns = []
 
 # Source file suffixes
 source_suffix = {
