@@ -164,6 +164,7 @@ epub_title = project
 epub_exclude_files = ["search.html"]
 
 # Autodoc settings
+autodoc_mock_imports = ["openvds", "ovds_utils"]
 autodoc_member_order = "bysource"
 autodoc_typehints = "description"
 autodoc_typehints_description_target = "documented"

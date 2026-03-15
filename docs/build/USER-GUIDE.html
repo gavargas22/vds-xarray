@@ -1,0 +1,1286 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Guide: Working with VDS Files in Xarray &mdash; vdsxarray 1.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=79cfeda8" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=292eb321"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=fd10adb8"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            vdsxarray
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installing-from-pypi">Installing from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#using-uv-recommended">Using uv (Recommended)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installing-from-source">Installing from Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#for-development">For Development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#for-users">For Users</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verification">Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#openvds-installation-issues">OpenVDS Installation Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#platform-specific-issues">Platform-Specific Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#dependency-conflicts">Dependency Conflicts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#optional-dependencies">Optional Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#for-enhanced-functionality">For Enhanced Functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#all-optional-dependencies">All Optional Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#opening-your-first-vds-file">Opening Your First VDS File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#understanding-the-dataset-structure">Understanding the Dataset Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#accessing-seismic-data">Accessing Seismic Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#selecting-data">Selecting Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#basic-visualization">Basic Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#simple-data-analysis">Simple Data Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#working-with-large-datasets">Working with Large Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#complete-example">Complete Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#common-patterns">Common Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#tips-for-success">Tips for Success</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#getting-help">Getting Help</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials (Learning-Oriented)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#who-these-tutorials-are-for">Who These Tutorials Are For</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#what-you-ll-learn">What You’ll Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#tutorial-path">Tutorial Path</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-dataset.html">Tutorial 1: Your First VDS Dataset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#step-1-import-required-libraries">Step 1: Import Required Libraries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#step-2-open-your-first-vds-file">Step 2: Open Your First VDS File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#step-3-understanding-the-dataset-structure">Step 3: Understanding the Dataset Structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#step-4-checking-data-properties">Step 4: Checking Data Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#step-5-accessing-coordinate-arrays">Step 5: Accessing Coordinate Arrays</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#step-6-selecting-data">Step 6: Selecting Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#step-7-extracting-a-single-trace">Step 7: Extracting a Single Trace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#step-8-extracting-a-2d-section">Step 8: Extracting a 2D Section</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#step-9-extracting-a-3d-subset">Step 9: Extracting a 3D Subset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#step-10-computing-values">Step 10: Computing Values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#step-11-basic-statistics">Step 11: Basic Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#step-12-saving-your-work">Step 12: Saving Your Work</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#complete-example">Complete Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#next-steps">Next Steps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first-dataset.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/visualization.html">Tutorial 2: Visualizing Seismic Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/data-analysis.html">Tutorial 3: Seismic Data Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/large-datasets.html">Tutorial 4: Working with Large Datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#tutorial-overview">Tutorial Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/index.html#your-first-vds-dataset">1. Your First VDS Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/index.html#visualizing-seismic-data">2. Visualizing Seismic Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/index.html#seismic-data-analysis">3. Seismic Data Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/index.html#working-with-large-datasets">4. Working with Large Datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#getting-help">Getting Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/first-dataset.html">Tutorial 1: Your First VDS Dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#step-1-import-required-libraries">Step 1: Import Required Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#step-2-open-your-first-vds-file">Step 2: Open Your First VDS File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#step-3-understanding-the-dataset-structure">Step 3: Understanding the Dataset Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-dataset.html#dimensions">Dimensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-dataset.html#coordinates">Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-dataset.html#data-variables">Data Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#step-4-checking-data-properties">Step 4: Checking Data Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#step-5-accessing-coordinate-arrays">Step 5: Accessing Coordinate Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#step-6-selecting-data">Step 6: Selecting Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-dataset.html#by-coordinate-value-recommended">By Coordinate Value (Recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-dataset.html#by-index-position">By Index Position</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#step-7-extracting-a-single-trace">Step 7: Extracting a Single Trace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#step-8-extracting-a-2d-section">Step 8: Extracting a 2D Section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#step-9-extracting-a-3d-subset">Step 9: Extracting a 3D Subset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#step-10-computing-values">Step 10: Computing Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#step-11-basic-statistics">Step 11: Basic Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#step-12-saving-your-work">Step 12: Saving Your Work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#complete-example">Complete Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-dataset.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/visualization.html">Tutorial 2: Visualizing Seismic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/data-analysis.html">Tutorial 3: Seismic Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/large-datasets.html">Tutorial 4: Working with Large Datasets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-To Guides (Problem-Oriented)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howto/index.html">How-To Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto/selection-slicing.html">Data Selection and Slicing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="howto/selection-slicing.html#how-to-select-a-region-of-interest">How to Select a Region of Interest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/selection-slicing.html#how-to-extract-seismic-traces">How to Extract Seismic Traces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="howto/visualization-recipes.html">Visualization Recipes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="howto/visualization-recipes.html#how-to-create-seismic-sections">How to Create Seismic Sections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/visualization-recipes.html#how-to-create-attribute-maps">How to Create Attribute Maps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="howto/export-data.html">Exporting Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="howto/export-data.html#how-to-export-to-netcdf">How to Export to NetCDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/export-data.html#how-to-export-to-zarr">How to Export to Zarr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/export-data.html#how-to-export-traces-to-csv">How to Export Traces to CSV</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="howto/performance-optimization.html">Performance Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="howto/performance-optimization.html#how-to-optimize-data-access">How to Optimize Data Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/performance-optimization.html#how-to-monitor-memory-usage">How to Monitor Memory Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/performance-optimization.html#how-to-process-large-datasets">How to Process Large Datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="howto/integration.html">Integration with Other Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="howto/integration.html#how-to-convert-to-numpy">How to Convert to NumPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/integration.html#how-to-convert-to-pandas">How to Convert to Pandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/integration.html#how-to-use-with-dask">How to Use with Dask</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="howto/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="howto/troubleshooting.html#common-issues-and-solutions">Common Issues and Solutions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="howto/troubleshooting.html#file-not-found">File Not Found</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/troubleshooting.html#memory-errors">Memory Errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/troubleshooting.html#slow-performance">Slow Performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/troubleshooting.html#coordinate-misalignment">Coordinate Misalignment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="howto/index.html#quick-links">Quick Links</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto/selection-slicing.html">Data Selection and Slicing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto/selection-slicing.html#how-to-select-a-region-of-interest">How to Select a Region of Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/selection-slicing.html#how-to-extract-seismic-traces">How to Extract Seismic Traces</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto/visualization-recipes.html">Visualization Recipes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto/visualization-recipes.html#how-to-create-seismic-sections">How to Create Seismic Sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/visualization-recipes.html#how-to-create-attribute-maps">How to Create Attribute Maps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto/export-data.html">Exporting Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto/export-data.html#how-to-export-to-netcdf">How to Export to NetCDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/export-data.html#how-to-export-to-zarr">How to Export to Zarr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/export-data.html#how-to-export-traces-to-csv">How to Export Traces to CSV</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto/performance-optimization.html">Performance Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto/performance-optimization.html#how-to-optimize-data-access">How to Optimize Data Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/performance-optimization.html#how-to-monitor-memory-usage">How to Monitor Memory Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/performance-optimization.html#how-to-process-large-datasets">How to Process Large Datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto/integration.html">Integration with Other Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto/integration.html#how-to-convert-to-numpy">How to Convert to NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/integration.html#how-to-convert-to-pandas">How to Convert to Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/integration.html#how-to-use-with-dask">How to Use with Dask</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto/troubleshooting.html#common-issues-and-solutions">Common Issues and Solutions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="howto/troubleshooting.html#file-not-found">File Not Found</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/troubleshooting.html#memory-errors">Memory Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/troubleshooting.html#slow-performance">Slow Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/troubleshooting.html#coordinate-misalignment">Coordinate Misalignment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference (Information-Oriented)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/api.html">API Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/api.html#vds-backend-engine">VDS Backend Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/api.html#backend-array">Backend Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/api.html#coordinate-functions">Coordinate Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/api.html#utility-functions">Utility Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/api.html#package-information">Package Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/api.html#constants">Constants</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/coordinate-system.html">Coordinate System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/coordinate-system.html#vds-coordinate-mapping">VDS Coordinate Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/coordinate-system.html#coordinate-generation">Coordinate Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/coordinate-system.html#coordinate-ranges">Coordinate Ranges</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/chunking.html">Chunking Strategy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/chunking.html#default-chunk-sizes">Default Chunk Sizes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/chunking.html#chunk-size-optimization">Chunk Size Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/chunking.html#custom-chunking">Custom Chunking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/chunking.html#chunking-guidelines">Chunking Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/backend-protocol.html">Backend Protocol</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/backend-protocol.html#backendentrypoint">BackendEntrypoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/backend-protocol.html#registration">Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/backend-protocol.html#backendarray">BackendArray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/backend-protocol.html#indexing-support">Indexing Support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/configuration.html">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/configuration.html#open-dataset-parameters"><code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference/configuration.html#parameters">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference/configuration.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/configuration.html#dask-configuration">Dask Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/index.html#api-documentation">API Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/index.html#coordinate-system">Coordinate System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/index.html#chunking">Chunking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/index.html#backend-protocol">Backend Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/index.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/api.html#vds-backend-engine">VDS Backend Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/api.html#backend-array">Backend Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/api.html#coordinate-functions">Coordinate Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/api.html#utility-functions">Utility Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/api.html#package-information">Package Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/api.html#constants">Constants</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/coordinate-system.html">Coordinate System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/coordinate-system.html#vds-coordinate-mapping">VDS Coordinate Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/coordinate-system.html#coordinate-generation">Coordinate Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/coordinate-system.html#coordinate-ranges">Coordinate Ranges</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/chunking.html">Chunking Strategy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/chunking.html#default-chunk-sizes">Default Chunk Sizes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/chunking.html#chunk-size-optimization">Chunk Size Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/chunking.html#custom-chunking">Custom Chunking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/chunking.html#chunking-guidelines">Chunking Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/backend-protocol.html">Backend Protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/backend-protocol.html#backendentrypoint">BackendEntrypoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/backend-protocol.html#registration">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/backend-protocol.html#backendarray">BackendArray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/backend-protocol.html#indexing-support">Indexing Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/configuration.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/configuration.html#open-dataset-parameters"><code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/configuration.html#parameters">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/configuration.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/configuration.html#dask-configuration">Dask Configuration</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Explanation (Understanding-Oriented)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="explanation/index.html">Explanation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="explanation/why-xarray.html">Why Xarray?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="explanation/why-xarray.html#key-benefits">Key Benefits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/why-xarray.html#vds-xarray-the-perfect-match">VDS + Xarray: The Perfect Match</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/vds-format.html">VDS Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="explanation/vds-format.html#format-overview">Format Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/vds-format.html#dimension-structure">Dimension Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/vds-format.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/architecture.html">Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="explanation/architecture.html#component-overview">Component Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/architecture.html#vdsengine">VdsEngine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/architecture.html#vdsbackendarray">VdsBackendArray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/architecture.html#coordinate-extraction">Coordinate Extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/architecture.html#data-flow">Data Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/lazy-loading.html">Lazy Loading</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="explanation/lazy-loading.html#what-is-lazy-loading">What is Lazy Loading?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/lazy-loading.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/lazy-loading.html#how-it-works">How It Works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/lazy-loading.html#benefits">Benefits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/lazy-loading.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/design-decisions.html">Design Decisions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="explanation/design-decisions.html#default-chunk-size-1283">Default Chunk Size: 128³</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/design-decisions.html#dimension-order-inline-crossline-sample">Dimension Order: (inline, crossline, sample)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/design-decisions.html#using-ovds-utils-over-direct-openvds">Using ovds-utils Over Direct openvds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/design-decisions.html#lazy-loading-by-default">Lazy Loading by Default</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explanation/design-decisions.html#no-eager-metadata-loading">No Eager Metadata Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/index.html#why-xarray">Why Xarray?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/index.html#vds-format">VDS Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/index.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/index.html#lazy-loading">Lazy Loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/index.html#design-decisions">Design Decisions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="explanation/why-xarray.html">Why Xarray?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="explanation/why-xarray.html#key-benefits">Key Benefits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/why-xarray.html#vds-xarray-the-perfect-match">VDS + Xarray: The Perfect Match</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="explanation/vds-format.html">VDS Format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="explanation/vds-format.html#format-overview">Format Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/vds-format.html#dimension-structure">Dimension Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/vds-format.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="explanation/architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="explanation/architecture.html#component-overview">Component Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/architecture.html#vdsengine">VdsEngine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/architecture.html#vdsbackendarray">VdsBackendArray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/architecture.html#coordinate-extraction">Coordinate Extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/architecture.html#data-flow">Data Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="explanation/lazy-loading.html">Lazy Loading</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="explanation/lazy-loading.html#what-is-lazy-loading">What is Lazy Loading?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/lazy-loading.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/lazy-loading.html#how-it-works">How It Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/lazy-loading.html#benefits">Benefits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/lazy-loading.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="explanation/design-decisions.html">Design Decisions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="explanation/design-decisions.html#default-chunk-size-1283">Default Chunk Size: 128³</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/design-decisions.html#dimension-order-inline-crossline-sample">Dimension Order: (inline, crossline, sample)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/design-decisions.html#using-ovds-utils-over-direct-openvds">Using ovds-utils Over Direct openvds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/design-decisions.html#lazy-loading-by-default">Lazy Loading by Default</a></li>
+<li class="toctree-l2"><a class="reference internal" href="explanation/design-decisions.html#no-eager-metadata-loading">No Eager Metadata Loading</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For AI Agents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ai-agents/index.html">For AI Coding Agents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/index.html#quick-reference">Quick Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/index.html#contents">Contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/architecture.html">Architecture for AI Agents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/architecture.html#repository-structure">Repository Structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/architecture.html#core-architecture">Core Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/architecture.html#utilities-vdsxarray-utils-py">Utilities (vdsxarray/utils.py)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/architecture.html#data-flow-diagram">Data Flow Diagram</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/architecture.html#entry-point-registration">Entry Point Registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/architecture.html#axis-order-mapping">Axis Order Mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/architecture.html#memory-management">Memory Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/architecture.html#type-system">Type System</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/architecture.html#important-implementation-details">Important Implementation Details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/architecture.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html">Development for AI Agents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/development.html#code-style-conventions">Code Style &amp; Conventions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/development.html#commit-messages">Commit Messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/development.html#pre-commit-hooks">Pre-commit Hooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/development.html#development-workflow">Development Workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/development.html#code-organization-principles">Code Organization Principles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/development.html#testing-guidelines">Testing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/development.html#documentation">Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/development.html#version-management">Version Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/development.html#dependencies">Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/development.html#common-patterns">Common Patterns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/development.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/testing.html">Testing for AI Agents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/testing.html#current-test-state">Current Test State</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/testing.html#running-tests">Running Tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/testing.html#pytest-configuration">Pytest Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/testing.html#coverage-configuration">Coverage Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/testing.html#testing-strategy">Testing Strategy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/testing.html#test-organization">Test Organization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/testing.html#mocking-vds-objects">Mocking VDS Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/testing.html#test-examples">Test Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/testing.html#fixtures">Fixtures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/testing.html#testing-checklist">Testing Checklist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/testing.html#ci-cd-testing">CI/CD Testing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/testing.html#known-test-gaps">Known Test Gaps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/testing.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html">Guardrails for AI Agents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#public-api-constraints">Public API Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#data-handling-constraints">Data Handling Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#code-quality-constraints">Code Quality Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#testing-constraints">Testing Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#documentation-constraints">Documentation Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#architecture-constraints">Architecture Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#error-handling-constraints">Error Handling Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#performance-constraints">Performance Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#version-control-constraints">Version Control Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#known-issues-to-avoid">Known Issues to Avoid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#summary-the-absolute-don-ts">Summary: The Absolute Don’ts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#quick-reference">Quick Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#next-steps">Next Steps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai-agents/guardrails.html#when-in-doubt">When in Doubt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/index.html#project-identity">Project Identity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/index.html#entry-point">Entry Point</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/index.html#domain-context-vds-seismic-data">Domain Context: VDS &amp; Seismic Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/index.html#key-dependencies">Key Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/index.html#development-commands">Development Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/index.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/index.html#run-tests">Run Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/index.html#linting">Linting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/index.html#known-issues">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/index.html#critical-guardrails">Critical Guardrails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/index.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/index.html#navigation">Navigation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ai-agents/architecture.html">Architecture for AI Agents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/architecture.html#repository-structure">Repository Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/architecture.html#core-architecture">Core Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/architecture.html#get-annotated-coordinates-vds">1. get_annotated_coordinates(vds)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/architecture.html#vdsbackendarray-backendarray">2. VdsBackendArray(BackendArray)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/architecture.html#vdsengine-backendentrypoint">3. VdsEngine(BackendEntrypoint)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/architecture.html#get-cdp-coordinates-vds">4. get_cdp_coordinates(vds)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/architecture.html#utilities-vdsxarray-utils-py">Utilities (vdsxarray/utils.py)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/architecture.html#get-vds-metadata-vds">get_vds_metadata(vds)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/architecture.html#estimate-chunk-size-shape-target-mb-64">estimate_chunk_size(shape, target_mb=64)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/architecture.html#data-flow-diagram">Data Flow Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/architecture.html#entry-point-registration">Entry Point Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/architecture.html#axis-order-mapping">Axis Order Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/architecture.html#memory-management">Memory Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/architecture.html#type-system">Type System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/architecture.html#important-implementation-details">Important Implementation Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/architecture.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ai-agents/development.html">Development for AI Agents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/development.html#code-style-conventions">Code Style &amp; Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#formatter">Formatter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#linter">Linter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#import-sorting">Import Sorting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#type-checking">Type Checking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#docstrings">Docstrings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#target-python-version">Target Python Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#quote-style">Quote Style</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/development.html#commit-messages">Commit Messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#format">Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#types">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/development.html#pre-commit-hooks">Pre-commit Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/development.html#development-workflow">Development Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#setup-environment">1. Setup Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#create-feature-branch">2. Create Feature Branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#make-changes">3. Make Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#run-tests">4. Run Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#run-linters">5. Run Linters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#fix-issues">6. Fix Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#commit-changes">7. Commit Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#push-and-create-pr">8. Push and Create PR</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/development.html#code-organization-principles">Code Organization Principles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#keep-it-simple">Keep It Simple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#preserve-lazy-loading">Preserve Lazy Loading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#coordinate-aware">Coordinate-Aware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#error-handling">Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/development.html#testing-guidelines">Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/development.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/development.html#version-management">Version Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/development.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/development.html#common-patterns">Common Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#opening-vds-files">Opening VDS Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#creating-coordinates">Creating Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#wrapping-in-lazy-array">Wrapping in Lazy Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/development.html#creating-dataset">Creating Dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/development.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ai-agents/testing.html">Testing for AI Agents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/testing.html#current-test-state">Current Test State</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/testing.html#test-file-location">Test File Location</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/testing.html#running-tests">Running Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/testing.html#all-tests">All Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/testing.html#with-coverage">With Coverage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/testing.html#specific-markers">Specific Markers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/testing.html#pytest-configuration">Pytest Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/testing.html#coverage-configuration">Coverage Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/testing.html#testing-strategy">Testing Strategy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/testing.html#unit-tests">Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/testing.html#integration-tests">Integration Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/testing.html#slow-tests">Slow Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/testing.html#test-organization">Test Organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/testing.html#mocking-vds-objects">Mocking VDS Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/testing.html#test-examples">Test Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/testing.html#test-vdsbackendarray">Test VdsBackendArray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/testing.html#test-vdsengine">Test VdsEngine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/testing.html#test-coordinate-extraction">Test Coordinate Extraction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/testing.html#fixtures">Fixtures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/testing.html#testing-checklist">Testing Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/testing.html#ci-cd-testing">CI/CD Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/testing.html#known-test-gaps">Known Test Gaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/testing.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ai-agents/guardrails.html">Guardrails for AI Agents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#public-api-constraints">Public API Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-change-entry-point-name">DO NOT Change Entry-Point Name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-change-dimension-names">DO NOT Change Dimension Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-add-dependencies-without-approval">DO NOT Add Dependencies Without Approval</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#data-handling-constraints">Data Handling Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-eagerly-load-full-volumes">DO NOT Eagerly Load Full Volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-break-lazy-evaluation-chain">DO NOT Break Lazy Evaluation Chain</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#code-quality-constraints">Code Quality Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-suppress-type-errors">DO NOT Suppress Type Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-use-python-3-10-exclusive-syntax">DO NOT Use Python 3.10+ Exclusive Syntax</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#testing-constraints">Testing Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-require-real-vds-files-in-tests">DO NOT Require Real VDS Files in Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-commit-large-test-data">DO NOT Commit Large Test Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#documentation-constraints">Documentation Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-remove-docstrings">DO NOT Remove Docstrings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-change-public-function-signatures">DO NOT Change Public Function Signatures</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#architecture-constraints">Architecture Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-call-openvds-directly">DO NOT Call openvds Directly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-change-dimension-order">DO NOT Change Dimension Order</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#error-handling-constraints">Error Handling Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-silently-swallow-errors">DO NOT Silently Swallow Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#performance-constraints">Performance Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-load-metadata-eagerly">DO NOT Load Metadata Eagerly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-create-huge-default-chunks">DO NOT Create Huge Default Chunks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#version-control-constraints">Version Control Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-edit-changelog-directly">DO NOT Edit CHANGELOG Directly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#do-not-force-push-to-main">DO NOT Force-Push to main</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#known-issues-to-avoid">Known Issues to Avoid</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#version-mismatch">Version Mismatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#commented-code">Commented Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#stub-functions">Stub Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai-agents/guardrails.html#silent-exception-swallowing">Silent Exception Swallowing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#summary-the-absolute-don-ts">Summary: The Absolute Don’ts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#quick-reference">Quick Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-agents/guardrails.html#when-in-doubt">When in Doubt</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#for-humans">For Humans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#development-setup">Development Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#code-style">Code Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#commit-messages">Commit Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#pull-requests">Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#questions">Questions?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-1-0-1">Version 1.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-1-0-0">Version 1.0.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">vdsxarray</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">User Guide: Working with VDS Files in Xarray</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/gavargas22/vds-xarray-backend/blob/main/docs/source/USER-GUIDE.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="user-guide-working-with-vds-files-in-xarray">
+<h1>User Guide: Working with VDS Files in Xarray<a class="headerlink" href="#user-guide-working-with-vds-files-in-xarray" title="Link to this heading"></a></h1>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<section id="installation-and-setup">
+<h3>Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the VDS Xarray Backend</span>
+pip<span class="w"> </span>install<span class="w"> </span>vdsxarray
+
+<span class="c1"># For development or latest features</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/gavargas22/vds-xarray-backend.git
+<span class="nb">cd</span><span class="w"> </span>vds-xarray-backend
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="your-first-vds-dataset">
+<h3>Your First VDS Dataset<a class="headerlink" href="#your-first-vds-dataset" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Open a VDS file - it&#39;s that simple!</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;path/to/your/seismic.vds&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;vds&#39;</span><span class="p">)</span>
+
+<span class="c1"># Explore your dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>What you’ll see:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">xarray</span><span class="o">.</span><span class="n">Dataset</span><span class="o">&gt;</span>
+<span class="n">Dimensions</span><span class="p">:</span>    <span class="p">(</span><span class="n">inline</span><span class="p">:</span> <span class="mi">1401</span><span class="p">,</span> <span class="n">crossline</span><span class="p">:</span> <span class="mi">1351</span><span class="p">,</span> <span class="n">sample</span><span class="p">:</span> <span class="mi">2741</span><span class="p">)</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+  <span class="o">*</span> <span class="n">inline</span>     <span class="p">(</span><span class="n">inline</span><span class="p">)</span> <span class="n">int16</span> <span class="mi">1300</span> <span class="mi">1301</span> <span class="mi">1302</span> <span class="o">...</span> <span class="mi">2698</span> <span class="mi">2699</span> <span class="mi">2700</span>
+  <span class="o">*</span> <span class="n">crossline</span>  <span class="p">(</span><span class="n">crossline</span><span class="p">)</span> <span class="n">int16</span> <span class="mi">2500</span> <span class="mi">2502</span> <span class="mi">2504</span> <span class="o">...</span> <span class="mi">5196</span> <span class="mi">5198</span> <span class="mi">5200</span>
+  <span class="o">*</span> <span class="n">sample</span>     <span class="p">(</span><span class="n">sample</span><span class="p">)</span> <span class="n">float32</span> <span class="mf">0.0</span> <span class="mf">3.048</span> <span class="mf">6.096</span> <span class="o">...</span> <span class="mf">8.348e+03</span> <span class="mf">8.352e+03</span>
+<span class="n">Data</span> <span class="n">variables</span><span class="p">:</span>
+    <span class="n">Amplitude</span>  <span class="p">(</span><span class="n">inline</span><span class="p">,</span> <span class="n">crossline</span><span class="p">,</span> <span class="n">sample</span><span class="p">)</span> <span class="n">float32</span> <span class="n">dask</span><span class="o">.</span><span class="n">array</span><span class="o">&lt;...&gt;</span>
+<span class="n">Attributes</span><span class="p">:</span>
+    <span class="n">title</span><span class="p">:</span>         <span class="n">VDS</span> <span class="n">Seismic</span> <span class="n">Data</span><span class="p">:</span> <span class="n">Amplitude</span>
+    <span class="n">source</span><span class="p">:</span>        <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">original</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">vds</span>
+    <span class="n">created_with</span><span class="p">:</span>  <span class="n">vdsxarray</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="basic-operations">
+<h2>Basic Operations<a class="headerlink" href="#basic-operations" title="Link to this heading"></a></h2>
+<section id="accessing-data">
+<h3>Accessing Data<a class="headerlink" href="#accessing-data" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the main seismic data</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span>
+
+<span class="c1"># Check if data is chunked (it should be!)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Chunked: </span><span class="si">{</span><span class="n">amplitude</span><span class="o">.</span><span class="n">chunks</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Chunk sizes: </span><span class="si">{</span><span class="n">amplitude</span><span class="o">.</span><span class="n">chunksizes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get coordinate information</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inline range: </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">inline</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">inline</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Crossline range: </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">crossline</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">crossline</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample range: </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">sample</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">sample</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="selecting-data">
+<h3>Selecting Data<a class="headerlink" href="#selecting-data" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select by coordinate values (not array indices!)</span>
+<span class="n">inline_slice</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span>  <span class="c1"># Single inline</span>
+<span class="n">crossline_slice</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">crossline</span><span class="o">=</span><span class="mi">2500</span><span class="p">)</span>  <span class="c1"># Single crossline</span>
+<span class="n">time_slice</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>  <span class="c1"># Nearest to 100ms</span>
+
+<span class="c1"># Select ranges</span>
+<span class="n">volume_subset</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span>
+    <span class="n">inline</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">1400</span><span class="p">,</span> <span class="mi">1600</span><span class="p">),</span>
+    <span class="n">crossline</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2400</span><span class="p">,</span> <span class="mi">2600</span><span class="p">),</span>
+    <span class="n">sample</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># First 1000ms</span>
+<span class="p">)</span>
+
+<span class="c1"># Select by integer position (if needed)</span>
+<span class="n">first_inline</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">last_sample</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">sample</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Link to this heading"></a></h2>
+<section id="quick-plotting">
+<h3>Quick Plotting<a class="headerlink" href="#quick-plotting" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot a single inline (seismic section)</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;crossline&#39;</span><span class="p">,</span> 
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span>
+    <span class="n">robust</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Better color scaling</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>  <span class="c1"># Time increases downward</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Inline 1500&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Plot a time slice (horizon view)</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;crossline&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;inline&#39;</span><span class="p">,</span> 
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span>
+    <span class="n">robust</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time Slice at ~200ms&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Plot a crossline section</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">crossline</span><span class="o">=</span><span class="mi">2500</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;inline&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span>
+    <span class="n">robust</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Crossline 2500&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-visualization">
+<h3>Advanced Visualization<a class="headerlink" href="#advanced-visualization" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Create a multi-panel figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Inline section</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> 
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;crossline&#39;</span><span class="p">,</span> 
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span> 
+    <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Inline 1500&#39;</span><span class="p">)</span>
+
+<span class="c1"># Crossline section  </span>
+<span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">crossline</span><span class="o">=</span><span class="mi">2500</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;inline&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span> 
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span>
+    <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Crossline 2500&#39;</span><span class="p">)</span>
+
+<span class="c1"># Time slice</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;crossline&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;inline&#39;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span>
+    <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Time Slice ~200ms&#39;</span><span class="p">)</span>
+
+<span class="c1"># RMS amplitude</span>
+<span class="n">rms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">))</span>
+<span class="n">rms</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;crossline&#39;</span><span class="p">,</span> 
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;inline&#39;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span>
+<span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;RMS Amplitude&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="data-analysis">
+<h2>Data Analysis<a class="headerlink" href="#data-analysis" title="Link to this heading"></a></h2>
+<section id="statistical-analysis">
+<h3>Statistical Analysis<a class="headerlink" href="#statistical-analysis" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic statistics</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset Statistics:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean amplitude: </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMS amplitude: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min amplitude: </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max amplitude: </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Statistics along specific dimensions</span>
+<span class="n">inline_rms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="s1">&#39;crossline&#39;</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">]))</span>
+<span class="n">crossline_rms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="s1">&#39;inline&#39;</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">]))</span>
+<span class="n">time_rms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="s1">&#39;inline&#39;</span><span class="p">,</span> <span class="s1">&#39;crossline&#39;</span><span class="p">]))</span>
+
+<span class="c1"># Plot RMS vs coordinates</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">inline_rms</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;RMS vs Inline&#39;</span><span class="p">)</span>
+
+<span class="n">crossline_rms</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;RMS vs Crossline&#39;</span><span class="p">)</span>
+
+<span class="n">time_rms</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;RMS vs Time&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="spectral-analysis">
+<h3>Spectral Analysis<a class="headerlink" href="#spectral-analysis" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">signal</span>
+
+<span class="c1"># Extract a trace for analysis</span>
+<span class="n">trace</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">crossline</span><span class="o">=</span><span class="mi">2500</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Calculate power spectral density</span>
+<span class="n">sample_rate</span> <span class="o">=</span> <span class="mf">1000.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">sample</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ds</span><span class="o">.</span><span class="n">sample</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># Hz</span>
+<span class="n">frequencies</span><span class="p">,</span> <span class="n">psd</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">welch</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">,</span> <span class="n">nperseg</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+
+<span class="c1"># Plot spectrum</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">sample</span><span class="p">,</span> <span class="n">trace</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Seismic Trace&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">psd</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power Spectral Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Frequency Spectrum&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="working-with-large-datasets">
+<h2>Working with Large Datasets<a class="headerlink" href="#working-with-large-datasets" title="Link to this heading"></a></h2>
+<section id="memory-efficient-operations">
+<h3>Memory-Efficient Operations<a class="headerlink" href="#memory-efficient-operations" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load dataset (lazy loading - no data in memory yet)</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;huge_survey.vds&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;vds&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dataset size: </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">nbytes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1e9</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> GB&quot;</span><span class="p">)</span>
+
+<span class="c1"># Select subset without loading full dataset</span>
+<span class="n">subset</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span>
+    <span class="n">inline</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1200</span><span class="p">),</span>
+    <span class="n">crossline</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2200</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Subset size: </span><span class="si">{</span><span class="n">subset</span><span class="o">.</span><span class="n">nbytes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> MB&quot;</span><span class="p">)</span>
+
+<span class="c1"># Perform computation on subset</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean amplitude in subset: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="chunked-processing">
+<h3>Chunked Processing<a class="headerlink" href="#chunked-processing" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">dask</span>
+
+<span class="c1"># Configure dask for your system</span>
+<span class="n">dask</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">({</span>
+    <span class="s1">&#39;array.chunk-size&#39;</span><span class="p">:</span> <span class="s1">&#39;128MB&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;array.slicing.split_large_chunks&#39;</span><span class="p">:</span> <span class="kc">True</span>
+<span class="p">})</span>
+
+<span class="c1"># Process in chunks automatically</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_agc</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">window_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply Automatic Gain Control&quot;&quot;&quot;</span>
+    <span class="c1"># This will process in chunks automatically</span>
+    <span class="n">rolling_rms</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="n">window_samples</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">agc_data</span> <span class="o">=</span> <span class="n">data</span> <span class="o">/</span> <span class="p">(</span><span class="n">rolling_rms</span> <span class="o">+</span> <span class="mf">1e-6</span><span class="p">)</span>  <span class="c1"># Avoid division by zero</span>
+    <span class="k">return</span> <span class="n">agc_data</span>
+
+<span class="c1"># Apply AGC to entire dataset (processes in chunks)</span>
+<span class="n">agc_amplitude</span> <span class="o">=</span> <span class="n">apply_agc</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="p">)</span>
+
+<span class="c1"># Compute result for a subset</span>
+<span class="n">agc_subset</span> <span class="o">=</span> <span class="n">agc_amplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">1400</span><span class="p">,</span> <span class="mi">1600</span><span class="p">))</span>
+<span class="n">agc_result</span> <span class="o">=</span> <span class="n">agc_subset</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="progress-monitoring">
+<h3>Progress Monitoring<a class="headerlink" href="#progress-monitoring" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dask.diagnostics</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProgressBar</span>
+
+<span class="c1"># Monitor progress of computations</span>
+<span class="k">with</span> <span class="n">ProgressBar</span><span class="p">():</span>
+    <span class="c1"># Compute RMS for entire dataset</span>
+    <span class="n">rms_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+    
+    <span class="c1"># Save result</span>
+    <span class="n">rms_map</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s1">&#39;rms_amplitude_map.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="data-export-and-conversion">
+<h2>Data Export and Conversion<a class="headerlink" href="#data-export-and-conversion" title="Link to this heading"></a></h2>
+<section id="export-to-different-formats">
+<h3>Export to Different Formats<a class="headerlink" href="#export-to-different-formats" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export subset to NetCDF</span>
+<span class="n">subset</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">1400</span><span class="p">,</span> <span class="mi">1600</span><span class="p">),</span> <span class="n">crossline</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2400</span><span class="p">,</span> <span class="mi">2600</span><span class="p">))</span>
+<span class="n">subset</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s1">&#39;seismic_subset.nc&#39;</span><span class="p">)</span>
+
+<span class="c1"># Export to Zarr (for cloud storage)</span>
+<span class="n">subset</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="s1">&#39;seismic_subset.zarr&#39;</span><span class="p">)</span>
+
+<span class="c1"># Export to CSV (for small datasets)</span>
+<span class="n">trace</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">crossline</span><span class="o">=</span><span class="mi">2500</span><span class="p">)</span>
+<span class="n">trace_df</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">trace_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;trace_1500_2500.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="integration-with-other-tools">
+<h3>Integration with Other Tools<a class="headerlink" href="#integration-with-other-tools" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to numpy for custom processing</span>
+<span class="n">subset_array</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Convert to pandas DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+
+<span class="c1"># Save processed data back as xarray</span>
+<span class="n">processed_amplitude</span> <span class="o">=</span> <span class="n">apply_custom_processing</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="p">)</span>
+<span class="n">processed_ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">processed_ds</span><span class="p">[</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">processed_amplitude</span>
+<span class="n">processed_ds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s1">&#39;processed_seismic.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="advanced-workflows">
+<h2>Advanced Workflows<a class="headerlink" href="#advanced-workflows" title="Link to this heading"></a></h2>
+<section id="time-lapse-analysis">
+<h3>Time-Lapse Analysis<a class="headerlink" href="#time-lapse-analysis" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load multiple surveys</span>
+<span class="n">surveys</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;survey_</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">.vds&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;vds&#39;</span><span class="p">)</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="n">year</span><span class="p">])</span>
+    <span class="n">surveys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+
+<span class="c1"># Combine into 4D dataset</span>
+<span class="n">time_lapse</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">surveys</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calculate differences</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">time_lapse</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">2018</span><span class="p">)</span>
+<span class="n">monitor_2020</span> <span class="o">=</span> <span class="n">time_lapse</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">monitor_2022</span> <span class="o">=</span> <span class="n">time_lapse</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">2022</span><span class="p">)</span>
+
+<span class="n">diff_2020</span> <span class="o">=</span> <span class="n">monitor_2020</span> <span class="o">-</span> <span class="n">baseline</span>
+<span class="n">diff_2022</span> <span class="o">=</span> <span class="n">monitor_2022</span> <span class="o">-</span> <span class="n">baseline</span>
+
+<span class="c1"># Visualize changes</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">diff_2020</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;crossline&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;inline&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span>
+<span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Amplitude Change 2018-2020&#39;</span><span class="p">)</span>
+
+<span class="n">diff_2022</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;crossline&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;inline&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span>
+<span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Amplitude Change 2018-2022&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="attribute-analysis">
+<h3>Attribute Analysis<a class="headerlink" href="#attribute-analysis" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate seismic attributes</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_attributes</span><span class="p">(</span><span class="n">amplitude_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate common seismic attributes&quot;&quot;&quot;</span>
+    
+    <span class="c1"># Instantaneous amplitude (envelope)</span>
+    <span class="n">analytic_signal</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">hilbert</span><span class="p">(</span><span class="n">amplitude_data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">inst_amplitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">analytic_signal</span><span class="p">)</span>
+    
+    <span class="c1"># Instantaneous phase</span>
+    <span class="n">inst_phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">analytic_signal</span><span class="p">)</span>
+    
+    <span class="c1"># Instantaneous frequency</span>
+    <span class="n">inst_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">inst_phase</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">inst_amplitude</span><span class="p">,</span> <span class="n">inst_phase</span><span class="p">,</span> <span class="n">inst_freq</span>
+
+<span class="c1"># Apply to a subset</span>
+<span class="n">subset</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">1400</span><span class="p">,</span> <span class="mi">1600</span><span class="p">),</span> <span class="n">crossline</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2400</span><span class="p">,</span> <span class="mi">2600</span><span class="p">))</span>
+<span class="n">amplitude_array</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">inst_amp</span><span class="p">,</span> <span class="n">inst_phase</span><span class="p">,</span> <span class="n">inst_freq</span> <span class="o">=</span> <span class="n">calculate_attributes</span><span class="p">(</span><span class="n">amplitude_array</span><span class="p">)</span>
+
+<span class="c1"># Create new dataset with attributes</span>
+<span class="n">attrs_ds</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">attrs_ds</span><span class="p">[</span><span class="s1">&#39;InstantaneousAmplitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s1">&#39;inline&#39;</span><span class="p">,</span> <span class="s1">&#39;crossline&#39;</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">],</span> <span class="n">inst_amp</span><span class="p">)</span>
+<span class="n">attrs_ds</span><span class="p">[</span><span class="s1">&#39;InstantaneousPhase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s1">&#39;inline&#39;</span><span class="p">,</span> <span class="s1">&#39;crossline&#39;</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">],</span> <span class="n">inst_phase</span><span class="p">)</span>
+
+<span class="c1"># Visualize attributes</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Original amplitude</span>
+<span class="n">subset</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;crossline&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span>
+<span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original Amplitude&#39;</span><span class="p">)</span>
+
+<span class="c1"># Instantaneous amplitude</span>
+<span class="n">attrs_ds</span><span class="o">.</span><span class="n">InstantaneousAmplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;crossline&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span>
+<span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Instantaneous Amplitude&#39;</span><span class="p">)</span>
+
+<span class="c1"># Instantaneous phase</span>
+<span class="n">attrs_ds</span><span class="o">.</span><span class="n">InstantaneousPhase</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;crossline&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hsv&#39;</span>
+<span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Instantaneous Phase&#39;</span><span class="p">)</span>
+
+<span class="c1"># Time slice of instantaneous amplitude</span>
+<span class="n">attrs_ds</span><span class="o">.</span><span class="n">InstantaneousAmplitude</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;crossline&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;inline&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span>
+<span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Inst. Amplitude at ~200ms&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="performance-tips">
+<h2>Performance Tips<a class="headerlink" href="#performance-tips" title="Link to this heading"></a></h2>
+<section id="optimizing-data-access">
+<h3>Optimizing Data Access<a class="headerlink" href="#optimizing-data-access" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Good: Select contiguous regions</span>
+<span class="n">good_subset</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span>
+    <span class="n">inline</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">),</span>      <span class="c1"># Contiguous range</span>
+    <span class="n">crossline</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">),</span>   <span class="c1"># Contiguous range</span>
+    <span class="n">sample</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>          <span class="c1"># Contiguous range</span>
+<span class="p">)</span>
+
+<span class="c1"># Avoid: Non-contiguous selections (slower)</span>
+<span class="c1"># scattered_inlines = ds.sel(inline=[1000, 1500, 2000])  # Non-contiguous</span>
+
+<span class="c1"># Good: Coordinate-based selection</span>
+<span class="n">time_slice</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+
+<span class="c1"># Less efficient: Index-based selection</span>
+<span class="c1"># time_slice = ds.isel(sample=50)  # Need to know the index</span>
+</pre></div>
+</div>
+</section>
+<section id="memory-management">
+<h3>Memory Management<a class="headerlink" href="#memory-management" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Monitor memory usage</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psutil</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">print_memory_usage</span><span class="p">():</span>
+    <span class="n">memory</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Memory usage: </span><span class="si">{</span><span class="n">memory</span><span class="o">.</span><span class="n">percent</span><span class="si">}</span><span class="s2">% (</span><span class="si">{</span><span class="n">memory</span><span class="o">.</span><span class="n">used</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1e9</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> GB / </span><span class="si">{</span><span class="n">memory</span><span class="o">.</span><span class="n">total</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1e9</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> GB)&quot;</span><span class="p">)</span>
+
+<span class="n">print_memory_usage</span><span class="p">()</span>
+
+<span class="c1"># Process data in smaller chunks if memory is limited</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># Process 200 inlines at a time</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">start_inline</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="s1">&#39;inline&#39;</span><span class="p">])[::</span><span class="n">chunk_size</span><span class="p">]:</span>
+    <span class="n">end_inline</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">start_inline</span> <span class="o">+</span> <span class="n">chunk_size</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="s1">&#39;inline&#39;</span><span class="p">])</span>
+    
+    <span class="n">chunk</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">start_inline</span><span class="p">,</span> <span class="n">end_inline</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">process_chunk</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>  <span class="c1"># Your processing function</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    
+    <span class="n">print_memory_usage</span><span class="p">()</span>
+
+<span class="c1"># Combine results</span>
+<span class="n">final_result</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="common-issues-and-solutions">
+<h3>Common Issues and Solutions<a class="headerlink" href="#common-issues-and-solutions" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Issue: &quot;File not found&quot; error</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;seismic.vds&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;vds&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Check file path and permissions&quot;</span><span class="p">)</span>
+
+<span class="c1"># Issue: Memory errors with large datasets</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">MemoryError</span><span class="p">:</span>
+    <span class="c1"># Solution: Process in smaller chunks</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Amplitude</span><span class="o">.</span><span class="n">chunk</span><span class="p">({</span><span class="s1">&#39;inline&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">})</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+
+<span class="c1"># Issue: Slow performance</span>
+<span class="c1"># Solution: Check chunk sizes</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current chunks: </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">chunks</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Rechunk if necessary</span>
+<span class="n">rechunked</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">chunk</span><span class="p">({</span><span class="s1">&#39;inline&#39;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span> <span class="s1">&#39;crossline&#39;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">:</span> <span class="mi">128</span><span class="p">})</span>
+
+<span class="c1"># Issue: Coordinate misalignment</span>
+<span class="c1"># Solution: Use .sel() with method=&#39;nearest&#39; for approximate matching</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="mf">100.5</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>  <span class="c1"># Finds closest sample</span>
+</pre></div>
+</div>
+<p>This user guide provides practical examples for working with VDS files in the xarray ecosystem, from basic operations to advanced seismic analysis workflows.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Guillermo Vargas.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
