@@ -22,12 +22,13 @@ def get_annotated_coordinates(vds: VDS):
     -------
     tuple[np.ndarray, np.ndarray, np.ndarray]
         A tuple containing three numpy arrays:
-        - samples : np.ndarray of float32
-            Sample coordinates array (axis 0 - usually time/depth)
-        - xlines : np.ndarray of int16
-            Crossline coordinates array (axis 1)
-        - ilines : np.ndarray of int16
-            Inline coordinates array (axis 2)
+
+        - **samples** (*np.ndarray of float32*) --
+          Sample coordinates array (axis 0 - usually time/depth)
+        - **xlines** (*np.ndarray of int16*) --
+          Crossline coordinates array (axis 1)
+        - **ilines** (*np.ndarray of int16*) --
+          Inline coordinates array (axis 2)
 
     Notes
     -----

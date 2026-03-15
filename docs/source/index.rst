@@ -121,10 +121,6 @@ This documentation follows the `Diátaxis framework <https://diataxis.fr/>`_, or
    :hidden:
 
    tutorials/index
-   tutorials/first-dataset
-   tutorials/visualization
-   tutorials/data-analysis
-   tutorials/large-datasets
 
 
 .. toctree::
@@ -133,12 +129,6 @@ This documentation follows the `Diátaxis framework <https://diataxis.fr/>`_, or
    :hidden:
 
    howto/index
-   howto/selection-slicing
-   howto/visualization-recipes
-   howto/export-data
-   howto/performance-optimization
-   howto/integration
-   howto/troubleshooting
 
 
 .. toctree::
@@ -147,11 +137,6 @@ This documentation follows the `Diátaxis framework <https://diataxis.fr/>`_, or
    :hidden:
 
    reference/index
-   reference/api
-   reference/coordinate-system
-   reference/chunking
-   reference/backend-protocol
-   reference/configuration
 
 
 .. toctree::
@@ -160,11 +145,6 @@ This documentation follows the `Diátaxis framework <https://diataxis.fr/>`_, or
    :hidden:
 
    explanation/index
-   explanation/why-xarray
-   explanation/vds-format
-   explanation/architecture
-   explanation/lazy-loading
-   explanation/design-decisions
 
 
 .. toctree::
@@ -173,10 +153,6 @@ This documentation follows the `Diátaxis framework <https://diataxis.fr/>`_, or
    :hidden:
 
    ai-agents/index
-   ai-agents/architecture
-   ai-agents/development
-   ai-agents/testing
-   ai-agents/guardrails
 
 
 .. toctree::
