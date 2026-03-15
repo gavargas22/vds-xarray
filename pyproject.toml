@@ -37,7 +37,7 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/gavargas22/vds-xarray-backend"
 "Repository" = "https://github.com/gavargas22/vds-xarray-backend"
-"Documentation" = "https://github.com/gavargas22/vds-xarray-backend#readme"
+"Documentation" = "https://gavargas22.github.io/vds-xarray-backend/"
 "Bug Tracker" = "https://github.com/gavargas22/vds-xarray-backend/issues"
 
 [build-system]
