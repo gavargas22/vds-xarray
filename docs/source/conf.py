@@ -101,7 +101,6 @@ html_theme_options = {
     "sticky_navigation": True,
     "includehidden": True,
     "titles_only": False,
-
     "prev_next_buttons_location": "bottom",
     "style_external_links": True,
 }
@@ -142,9 +141,7 @@ latex_documents = [
 ]
 
 # -- Options for manual page output ------------------------------------------
-man_pages = [
-    ("index", "vdsxarray", "vdsxarray Documentation", [author], 1)
-]
+man_pages = [("index", "vdsxarray", "vdsxarray Documentation", [author], 1)]
 
 # -- Options for Texinfo output ----------------------------------------------
 texinfo_documents = [
