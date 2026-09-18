@@ -2,7 +2,7 @@
 
 [![PyPI version](https://badge.fury.io/py/vdsxarray.svg)](https://badge.fury.io/py/vdsxarray)
 [![Python versions](https://img.shields.io/pypi/pyversions/vdsxarray.svg)](https://pypi.org/project/vdsxarray/)
-[![License](https://img.shields.io/github/license/gavargas22/vds-xarray-backend.svg)](https://github.com/gavargas22/vds-xarray-backend/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/gavargas22/vds-xarray.svg)](https://github.com/gavargas22/vds-xarray/blob/main/LICENSE)
 
 An xarray backend for reading VDS (Volume Data Store) files, commonly used in seismic data processing and geophysical applications.
 
@@ -20,8 +20,8 @@ uv add vdsxarray
 
 For development:
 ```bash
-git clone https://github.com/gavargas22/vds-xarray-backend.git
-cd vds-xarray-backend
+git clone https://github.com/gavargas22/vds-xarray.git
+cd vds-xarray
 uv sync --group dev --group test
 ```
 
@@ -107,8 +107,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 1. **Setup development environment:**
    ```bash
-   git clone https://github.com/gavargas22/vds-xarray-backend.git
-   cd vds-xarray-backend
+   git clone https://github.com/gavargas22/vds-xarray.git
+   cd vds-xarray
    uv sync --group dev --group test
    ```
 
@@ -149,8 +149,6 @@ This project uses automated releases via GitHub Actions:
 
 **Manual Release Workflow:**
 You can also use the GitHub Actions manual release workflow to create releases with custom options.
-
-**This line will be removed, it is only for testing PRs**
 
 ## License
 
