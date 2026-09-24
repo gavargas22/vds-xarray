@@ -113,7 +113,7 @@ html_css_files = [
 html_context = {
     "display_github": True,
     "github_user": "gavargas22",
-    "github_repo": "vds-xarray-backend",
+    "github_repo": "vds-xarray",
     "github_version": "main",
     "conf_py_path": "/docs/source/",
 }
